@@ -10,18 +10,18 @@ const UserSchema = new Schema({
     minlength: [4, '帳號必須 4 個字以上'],
     maxlength: [20, '帳號不能超過 20 個字'],
     unique: true,
-    requird: [true, '帳號不能為空']
+    required: [true, '帳號不能為空']
   },
   password: {
     type: String,
     minlength: [4, '密碼必須 4 個字以上'],
     maxlength: [20, '密碼不能超過 20 個字'],
-    requird: [true, '密碼不能為空']
+    required: [true, '密碼不能為空']
   },
   email: {
     type: String,
     unique: true,
-    requird: [true, '信箱不能為空'],
+    required: [true, '信箱不能為空'],
     validate: {
       validator: (email) => {
         return validator.isEmail(email)
@@ -34,7 +34,7 @@ const UserSchema = new Schema({
     // 1 = 管理員
     type: Number,
     default: 0,
-    requird: [true, '沒有使用者分類']
+    required: [true, '沒有使用者分類']
   },
   tokens: {
     type: [String]
@@ -45,11 +45,11 @@ const UserSchema = new Schema({
         product: {
           type: Schema.Types.ObjectId,
           ref: 'products',
-          requird: [true, '缺少商品 ID']
+          required: [true, '缺少商品 ID']
         },
         amount: {
           type: Number,
-          requird: [true, '缺少商品數量']
+          required: [true, '缺少商品數量']
         }
       }
     ]
